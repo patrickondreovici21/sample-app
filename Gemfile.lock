@@ -71,6 +71,7 @@ GEM
     autoprefixer-rails (10.4.21.0)
       execjs (~> 2)
     base64 (0.3.0)
+    bcrypt (3.1.18)
     bindex (0.8.1)
     bootsnap (1.18.6)
       msgpack (~> 1.2)
@@ -191,6 +192,10 @@ GEM
       activesupport (= 7.0.8.7)
       bundler (>= 1.15.0)
       railties (= 7.0.8.7)
+    rails-controller-testing (1.0.5)
+      actionpack (>= 5.0.1.rc1)
+      actionview (>= 5.0.1.rc1)
+      activesupport (>= 5.0.1.rc1)
     rails-dom-testing (2.3.0)
       activesupport (>= 5.0.0)
       minitest
@@ -281,6 +286,7 @@ PLATFORMS
   x86_64-linux-musl
 
 DEPENDENCIES
+  bcrypt (= 3.1.18)
   bootsnap
   bootstrap-sass (= 3.4.1)
   capybara
@@ -289,6 +295,7 @@ DEPENDENCIES
   jbuilder
   puma (~> 5.0)
   rails (~> 7.0.4)
+  rails-controller-testing
   sassc-rails (= 2.1.2)
   selenium-webdriver
   sprockets-rails
