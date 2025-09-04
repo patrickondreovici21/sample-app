@@ -19,13 +19,13 @@
         <%= link_to "Users", "#", class: "hover:text-gray-300" %>
 
         <div class="relative group">
-          <button class="flex items-center space-x-1 hover:text-gray-300">
+          <button id ="account" class="flex items-center space-x-1 hover:text-gray-300">
             <span>Account</span>
             <svg class="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
               <path d="M5.25 7.5l4.5 4.5 4.5-4.5H5.25z"/>
             </svg>
           </button>
-          <ul class="absolute right-0 mt-2 w-40 bg-white text-gray-800 rounded shadow-lg hidden group-hover:block">
+          <ul id="menu" class="absolute right-0 mt-2 w-40 bg-white text-gray-800 rounded shadow-lg hidden">
             <li><%= link_to "Profile", current_user, class: "block px-4 py-2 hover:bg-gray-200" %></li>
             <li><%= link_to "Settings", "#", class: "block px-4 py-2 hover:bg-gray-200" %></li>
             <li><hr class="my-1 border-gray-300"></li>
