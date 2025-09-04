@@ -1,7 +1,15 @@
-<div class="center jumbotron">
-    <h1>Welcome to the Sample App</h1>
-    <h2>This is the home page for the<a href="https://www.railstutorial.org/">Ruby on RailsTutorial</a>sample application.</h2>
-    <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-
-primary" %>
+<div class="text-center bg-gray-100 py-16 px-4">
+  <h1 class="text-5xl font-bold mb-4">Welcome to the Sample App</h1>
+  <h2 class="text-xl text-gray-700 mb-6">
+    This is the home page for the
+    <a href="https://www.railstutorial.org/" class="text-blue-600 hover:underline">
+      Ruby on Rails Tutorial
+    </a>
+    sample application.
+  </h2>
+  <%= link_to "Sign up now!", signup_path, class: "inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg text-lg transition" %>
 </div>
-<%= link_to image_tag("rails.svg", alt: "Rails logo", width:"200"),"https://rubyonrails.org/" %>
+
+<div class="mt-8 text-center">
+  <%= link_to image_tag("rails.svg", alt: "Rails logo", width: "200"), "https://rubyonrails.org/" %>
+</div>
