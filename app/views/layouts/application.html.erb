@@ -6,22 +6,33 @@
     <meta charset="utf-8">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-
     <%= render 'layouts/shim' %>
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
+  <body class="bg-gray-50 text-gray-900 flex flex-col min-h-screen">
     <%= render 'layouts/header' %>
-    <div class="container">
+
+    <!-- flex-grow pushes footer down -->
+    <main class="flex-grow container mx-auto px-4 py-8 mt-8">
       <% flash.each do |message_type, message| %>
-        <div class="alert alert-<%= message_type %>"><%= message %>
+        <div class="mb-4 p-4 rounded border-l-4
+          <%=
+            case message_type.to_sym
+            when :notice then 'bg-blue-100 border-blue-500 text-blue-700'
+            when :alert then 'bg-red-100 border-red-500 text-red-700'
+            else 'bg-gray-100 border-gray-400 text-gray-700'
+            end
+          %>">
+          <%= message %>
         </div>
       <% end %>
+
       <%= yield %>
-      <%= render 'layouts/footer' %>
-    </div>
+    </main>
+
+    <%= render 'layouts/footer', class: "mt-auto" %>
   </body>
 </html>
