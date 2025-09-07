@@ -16,7 +16,7 @@
       <%= link_to "Help", help_path, class: "hover:text-gray-300" %>
 
       <% if logged_in? %>
-        <%= link_to "Users", "#", class: "hover:text-gray-300" %>
+        <%= link_to "Users", users_path, class: "hover:text-gray-300" %>
 
         <div class="relative group">
           <button id ="account" class="flex items-center space-x-1 hover:text-gray-300">
@@ -47,9 +47,9 @@
     <%= link_to "Help", help_path, class: "block px-4 py-2 text-white hover:bg-gray-600" %>
 
     <% if logged_in? %>
-      <%= link_to "Users", "#", class: "block px-4 py-2 text-white hover:bg-gray-600" %>
+      <%= link_to "Users", users_path, class: "block px-4 py-2 text-white hover:bg-gray-600" %>
       <%= link_to "Profile", current_user, class: "block px-4 py-2 text-white hover:bg-gray-600" %>
-      <%= link_to "Settings", "#", class: "block px-4 py-2 text-white hover:bg-gray-600" %>
+      <%= link_to "Settings", edit_user_path(current_user), class: "block px-4 py-2 text-white hover:bg-gray-600" %>
       <%= link_to "Log out", logout_path,
             data: { turbo_method: :delete },
             class: "block px-4 py-2 hover:bg-gray-200" %>

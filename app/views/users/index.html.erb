@@ -1,0 +1,31 @@
+<% provide(:title, "All Users") %>
+
+<div class="max-w-3xl mx-auto px-4 py-8">
+  <h1 class="text-4xl font-bold mb-8 text-center text-gray-800">All Users</h1>
+
+  <ul class="space-y-4">
+    <% @users.each do |user| %>
+      <li class="flex items-center justify-between p-4 bg-white shadow rounded-lg hover:bg-gray-50 transition">
+        <div class="flex items-center">
+          <div class="mr-4">
+            <%= gravatar_for user %>
+          </div>
+          <%= link_to user.name, user, class: "text-lg font-medium text-blue-600 hover:underline" %>
+        </div>
+        
+        <% if current_user.admin? && !current_user?(user) %>
+          <%= link_to "Delete", user, 
+                data: { "turbo-method": :delete, turbo_confirm: "Are you sure?" }, 
+                class: "px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600 transition" %>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+
+  <div class="flex justify-center mt-6 space-x-1">
+    <%= will_paginate @users, 
+          previous_label: "« Prev", 
+          next_label: "Next »", 
+          class: "flex space-x-1" %>
+  </div>
+</div>
