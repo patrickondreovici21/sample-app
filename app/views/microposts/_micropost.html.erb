@@ -1,0 +1,22 @@
+<li id="micropost-<%= micropost.id %>" 
+    class="bg-white shadow rounded-2xl p-4 mb-4 hover:shadow-md transition">
+
+  <div class="flex items-start space-x-4">
+    <%= link_to gravatar_for(micropost.user, size: 50), micropost.user, class: "shrink-0" %>
+
+    <div class="flex-1">
+      <div class="flex items-center space-x-2">
+        <span class="font-semibold text-gray-800">
+          <%= link_to micropost.user.name, micropost.user, class: "hover:underline" %>
+        </span>
+        <span class="text-xs text-gray-500">
+          • <%= time_ago_in_words(micropost.created_at) %> ago
+        </span>
+      </div>
+
+      <p class="mt-2 text-gray-700 leading-relaxed break-words">
+        <%= micropost.content %>
+      </p>
+    </div>
+  </div>
+</li>

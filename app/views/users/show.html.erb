@@ -1,20 +1,36 @@
 <% provide(:title, @user.name) %>
 
-<div class="container mx-auto px-4 py-8 flex flex-col md:flex-row">
+<div class="container mx-auto px-4 py-8 flex flex-col md:flex-row gap-8">
   
-  <!-- Sidebar / User Info -->
-  <aside class="md:w-1/3 mb-6 md:mb-0">
-    <section class="user-info bg-white p-4 rounded-lg shadow">
+  <aside class="md:w-1/3">
+    <section class="bg-white p-6 rounded-2xl shadow-md">
       <div class="flex items-center space-x-4">
-        <%= gravatar_for @user %>
+        <%= gravatar_for @user, size: 80 %>
         <h1 class="text-2xl font-bold text-gray-800"><%= @user.name %></h1>
       </div>
     </section>
   </aside>
 
-  <!-- Main content could go here -->
-  <main class="md:w-2/3 md:pl-8">
-    <!-- Placeholder for main user content -->
-  </main>
+  <div class="flex-1">
+    <% if @user.microposts.any? %>
+      <h3 class="text-xl font-semibold text-gray-700 mb-4">
+        Microposts 
+        <span class="text-gray-500 text-base">(<%= @user.microposts.count %>)</span>
+      </h3>
+
+      <ol class="space-y-4">
+        <%= render @microposts %>
+      </ol>
+
+      <div class="flex justify-center mt-8">
+        <%= will_paginate @microposts, 
+            previous_label: "« Prev", 
+            next_label: "Next »", 
+            class: "pagination flex space-x-2 text-sm" %>
+      </div>
+    <% else %>
+      <p class="text-gray-500 italic">This user hasn’t posted anything yet.</p>
+    <% end %>
+  </div>
 
 </div>

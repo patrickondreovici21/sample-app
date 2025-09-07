@@ -1,0 +1,12 @@
+<div class="flex items-center space-x-4 p-4 bg-white rounded-xl shadow-md">
+  <%= link_to gravatar_for(current_user, size: 50), current_user, class: "shrink-0" %>
+
+  <div>
+    <h1 class="text-xl font-semibold text-gray-900"><%= current_user.name %></h1>
+    <div class="flex items-center space-x-3 text-sm text-gray-600">
+      <%= link_to "View my profile", current_user, class: "text-indigo-600 hover:text-indigo-800 font-medium" %>
+      <span>•</span>
+      <span><%= pluralize(current_user.microposts.count, "micropost") %></span>
+    </div>
+  </div>
+</div>
