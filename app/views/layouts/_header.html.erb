@@ -27,7 +27,7 @@
           </button>
           <ul id="menu" class="absolute right-0 mt-2 w-40 bg-white text-gray-800 rounded shadow-lg hidden">
             <li><%= link_to "Profile", current_user, class: "block px-4 py-2 hover:bg-gray-200" %></li>
-            <li><%= link_to "Settings", "#", class: "block px-4 py-2 hover:bg-gray-200" %></li>
+            <li><%= link_to "Settings", edit_user_path(current_user), class: "block px-4 py-2 hover:bg-gray-200" %></li>
             <li><hr class="my-1 border-gray-300"></li>
             <li>
             <%= link_to "Log out", logout_path,
