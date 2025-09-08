@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   before_action :admin_user, only: [:destroy]
 
   def index
-    @users = User.order(:name).paginate(page: params[:page], per_page: 10)
+    @pagy, @users = pagy(User.order(:name))
   end
 
   def new
@@ -12,7 +12,13 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    @user = User.find_by(id: params[:id])
+    if @user.nil?
+      flash[:alert] = "User not found"
+      redirect_to root_path
+    else
+      @pagy, @microposts = pagy(@user.microposts, overflow: :last_page)
+    end
   end
 
 
@@ -54,13 +60,6 @@ class UsersController < ApplicationController
 
     def user_params
       params.require(:user).permit(:name, :email, :password, :password_confirmation)
-    end
-
-    def logged_in_user
-      unless logged_in?
-          flash[:danger] = "Please log in."
-          redirect_to login_url, status: :see_other
-      end
     end
       
     def correct_user

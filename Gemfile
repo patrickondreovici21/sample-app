@@ -6,7 +6,11 @@ ruby "3.1.4"
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.4"
 
+gem "active_storage_validations", "0.9.8"
+
 gem "faker", "2.21.0"
+
+gem "image_processing", "1.12.2"
 
 gem "bcrypt", "3.1.18"
 
@@ -14,7 +18,7 @@ gem "bootstrap-sass", "3.4.1"
 
 gem "sassc-rails", "2.1.2"
 
-gem "will_paginate", "3.3.1"
+gem 'pagy', '~> 9.3'
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
