@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   before_action :admin_user, only: [:destroy]
 
   def index
-    @users = User.order(:name).paginate(page: params[:page], per_page: 10)
+    @pagy, @users = pagy(User.order(:name))
   end
 
   def new
@@ -17,7 +17,7 @@ class UsersController < ApplicationController
       flash[:alert] = "User not found"
       redirect_to root_path
     else
-      @microposts = @user.microposts.paginate(page: params[:page])
+      @pagy, @microposts = pagy(@user.microposts)
     end
   end
 

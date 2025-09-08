@@ -14,7 +14,7 @@ gem "bootstrap-sass", "3.4.1"
 
 gem "sassc-rails", "2.1.2"
 
-gem "will_paginate", "3.3.1"
+gem 'pagy', '~> 9.3'
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"

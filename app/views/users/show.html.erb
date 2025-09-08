@@ -23,10 +23,7 @@
       </ol>
 
       <div class="flex justify-center mt-8">
-        <%= will_paginate @microposts, 
-            previous_label: "« Prev", 
-            next_label: "Next »", 
-            class: "pagination flex space-x-2 text-sm" %>
+        <%== pagy_nav(@pagy) %>
       </div>
     <% else %>
       <p class="text-gray-500 italic">This user hasn’t posted anything yet.</p>

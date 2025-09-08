@@ -23,9 +23,6 @@
   </ul>
 
   <div class="flex justify-center mt-6 space-x-1">
-    <%= will_paginate @users, 
-          previous_label: "« Prev", 
-          next_label: "Next »", 
-          class: "pagination flex space-x-1" %>
+      <%== pagy_nav(@pagy) %>
   </div>
 </div>
