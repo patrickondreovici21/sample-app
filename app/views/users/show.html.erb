@@ -12,10 +12,10 @@
   </aside>
 
   <div class="flex-1">
-    <% if @user.microposts.any? %>
+    <% if @microposts.any? %>
       <h3 class="text-xl font-semibold text-gray-700 mb-4">
         Microposts 
-        <span class="text-gray-500 text-base">(<%= @user.microposts.count %>)</span>
+        <span class="text-gray-500 text-base">(<%= @microposts.count %>)</span>
       </h3>
 
       <ol class="space-y-4">
