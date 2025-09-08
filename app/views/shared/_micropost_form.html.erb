@@ -1,13 +1,19 @@
 <%= form_with(model: @micropost, local: true) do |f| %>
-    <%= render 'shared/error_messages', object: f.object %>
-  
-    <div class="mb-4">
-      <%= f.text_area :content, 
-        placeholder: "Compose new micropost...", 
-        class: "w-full rounded-lg border-gray-300 focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 p-3 text-gray-700" %>
-    </div>
-  
-    <%= f.submit "Post", 
-      class: "bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded-lg shadow-md transition duration-200" %>
+  <%= render 'shared/error_messages', object: f.object %>
+
+  <div class="mb-4">
+    <%= f.text_area :content, 
+      placeholder: "Compose new micropost...", 
+      class: "w-full rounded-lg border-gray-300 focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 p-3 text-gray-700" %>
+  </div>
+
+  <div class="mb-4">
+    <%= f.file_field :image, accept: "image/jpeg,image/gif,image/png",
+      class: "block w-full text-gray-700 border border-gray-300 rounded-lg cursor-pointer 
+             bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 
+             focus:border-indigo-500 p-2" %>
+  </div>
+
+  <%= f.submit "Post", 
+    class: "bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded-lg shadow-md transition duration-200" %>
 <% end %>
-  
