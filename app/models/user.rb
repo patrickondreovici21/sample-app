@@ -13,6 +13,10 @@ class User < ApplicationRecord
 
     has_secure_password
 
+    def feed
+        Micropost.where("user_id = ?", id)
+    end
+
 
     def User.new_token
         SecureRandom.urlsafe_base64

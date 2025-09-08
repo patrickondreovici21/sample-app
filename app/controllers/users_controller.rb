@@ -17,7 +17,7 @@ class UsersController < ApplicationController
       flash[:alert] = "User not found"
       redirect_to root_path
     else
-      @pagy, @microposts = pagy(@user.microposts)
+      @pagy, @microposts = pagy(@user.microposts, overflow: :last_page)
     end
   end
 

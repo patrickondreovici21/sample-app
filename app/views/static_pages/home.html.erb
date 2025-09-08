@@ -1,6 +1,6 @@
 <% if logged_in? %>
 <div class="flex flex-col md:flex-row md:space-x-6">
-  <aside class="w-full md:w-1/3 space-y-6">
+  <aside class="w-full md:w-1/3 space-y-6 mb-10">
     <section class="user_info bg-white p-4 rounded-xl shadow">
       <%= render 'shared/user_info' %>
     </section>
@@ -9,6 +9,15 @@
       <%= render 'shared/micropost_form' %>
     </section>
   </aside>
+  <div class="w-full md:w-2/3 space-y-4 bg-white p-4 rounded-xl shadow">
+    <h3 class="text-lg font-semibold text-gray-700 border-b pb-2">
+      Micropost Feed
+    </h3>
+    <%= render 'shared/feed' %>
+    <div class="flex justify-center mt-8">
+        <%== pagy_nav(@pagy) %>
+    </div>
+  </div>
 </div>
 <% else %>
 <div class="text-center bg-gray-100 py-16 px-4">

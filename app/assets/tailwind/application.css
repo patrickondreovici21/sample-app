@@ -1,21 +1,5 @@
 @import "tailwindcss";
 
-/* Tailwind styling for will_paginate */
-.previous_page a,
-.next_page a,
-.pagination a {
-  @apply px-3 py-1 border border-gray-300 bg-white text-gray-700 rounded hover:bg-gray-100;
-}
-
-.current {
-  @apply px-3 py-1 border border-gray-300 bg-blue-500 text-white rounded;
-}
-
-.disabled {
-  @apply px-3 py-1 border border-gray-300 bg-gray-200 text-gray-400 rounded;
-}
-
-
 .pagy {
   @apply flex space-x-1 font-semibold text-sm text-gray-500;
   a:not(.gap) {

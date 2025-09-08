@@ -1,0 +1,7 @@
+<% if @feed_items.any? %>
+  <ol class="space-y-4 list-none">
+    <%= render @feed_items %>
+  </ol>
+<% else %>
+  <p class="text-gray-500 italic">No posts</p>
+<% end %>

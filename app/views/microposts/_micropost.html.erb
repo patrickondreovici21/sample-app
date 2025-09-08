@@ -5,13 +5,21 @@
     <%= link_to gravatar_for(micropost.user, size: 50), micropost.user, class: "shrink-0" %>
 
     <div class="flex-1">
-      <div class="flex items-center space-x-2">
-        <span class="font-semibold text-gray-800">
-          <%= link_to micropost.user.name, micropost.user, class: "hover:underline" %>
-        </span>
-        <span class="text-xs text-gray-500">
-          • <%= time_ago_in_words(micropost.created_at) %> ago
-        </span>
+      <div class="flex items-center justify-between">
+        <div class="flex items-center space-x-2">
+          <span class="font-semibold text-gray-800">
+            <%= link_to micropost.user.name, micropost.user, class: "hover:underline" %>
+          </span>
+          <span class="text-xs text-gray-500">
+            • <%= time_ago_in_words(micropost.created_at) %> ago
+          </span>
+        </div>
+
+        <% if current_user?(micropost.user) %>
+          <%= link_to "Delete", micropost, 
+                data: { "turbo-method": :delete, turbo_confirm: "Are you sure?" }, 
+                class: "text-red-600 hover:text-red-800 text-sm font-medium px-2 py-1 rounded-lg hover:bg-red-50 transition" %>
+        <% end %>
       </div>
 
       <p class="mt-2 text-gray-700 leading-relaxed break-words">
