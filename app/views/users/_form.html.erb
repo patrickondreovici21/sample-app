@@ -14,6 +14,9 @@
     <div>
       <%= f.label :password, class: "block text-gray-700 font-medium mb-2" %>
       <%= f.password_field :password, class: "w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" %>
+      <% if @user.persisted? %>
+        <small class="text-gray-500">Leave blank if you don't want to change your password</small>
+      <% end %>
     </div>
 
     <div>

@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: [:index, :edit, :update, :destroy]
+  before_action :logged_in_user, only: [:index, :edit, :update, :destroy, :following, :followers]
   before_action :correct_user, only: [:edit, :update]
   before_action :admin_user, only: [:destroy]
 
@@ -17,7 +17,7 @@ class UsersController < ApplicationController
       flash[:alert] = "User not found"
       redirect_to root_path
     else
-      @pagy, @microposts = pagy(@user.microposts, overflow: :last_page)
+      @pagy, @microposts = pagy(@user.microposts.includes(image_attachment: :blob), overflow: :last_page)
     end
   end
 
@@ -53,6 +53,22 @@ class UsersController < ApplicationController
     else
       render 'edit', status: :unprocessable_entity
     end
+  end
+
+
+  def following
+    @title = "Following"
+    @user = User.find(params[:id])
+    @pagy, @users = pagy(@user.following)
+    render 'show_follow', status: :unprocessable_entity
+  end
+
+
+  def followers
+    @title = "Followers"
+    @user = User.find(params[:id])
+    @pagy, @users = pagy(@user.followers)
+    render 'show_follow', status: :unprocessable_entity
   end
 
 
