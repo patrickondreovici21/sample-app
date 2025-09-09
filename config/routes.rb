@@ -11,6 +11,10 @@ Rails.application.routes.draw do
     member do
       get :following, :followers
     end
+
+    collection do
+      get :search
+    end
   end
   resources :account_activations, only: [:edit]
   resources :microposts, only: [:create, :destroy]

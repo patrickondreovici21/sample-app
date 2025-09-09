@@ -11,6 +11,24 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+
+  # users_controller.rb
+  def search
+    @query = params[:query].to_s.strip
+    @results = @query.blank? ? [] : User.search_by_name(@query).records.limit(5)
+
+    respond_to do |format|
+      format.json { render json: @results.map { |u| { id: u.id, name: u.name } } }
+    end
+  end
+
+  
+  
+  
+  
+  
+  
+
   def show
     @user = User.find_by(id: params[:id])
     if @user.nil?
@@ -37,6 +55,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       UserMailer.account_activation(@user).deliver_now
+      IndexUserJob.perform_later(@user.id)
       flash[:info] = "Please check your email to activate your account."
       redirect_to root_url
     else

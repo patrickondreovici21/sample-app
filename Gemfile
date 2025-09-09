@@ -20,6 +20,10 @@ gem "sassc-rails", "2.1.2"
 
 gem 'pagy', '~> 9.3'
 
+gem 'elasticsearch-model'
+
+gem 'elasticsearch-rails'
+
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
 
