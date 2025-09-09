@@ -134,6 +134,10 @@ GEM
     jbuilder (2.14.1)
       actionview (>= 7.0.0)
       activesupport (>= 7.0.0)
+    launchy (2.5.2)
+      addressable (~> 2.8)
+    letter_opener (1.10.0)
+      launchy (>= 2.2, < 4)
     logger (1.7.0)
     loofah (2.24.1)
       crass (~> 1.0.2)
@@ -323,6 +327,7 @@ DEPENDENCIES
   image_processing (= 1.12.2)
   importmap-rails
   jbuilder
+  letter_opener
   pagy (~> 9.3)
   pg (>= 1.4, < 3.0)
   puma (~> 5.0)
