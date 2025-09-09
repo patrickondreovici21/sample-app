@@ -27,8 +27,11 @@
       </p>
 
       <% if micropost.image.attached? %>
-        <%= image_tag micropost.image.variant(:display) %>
-      <% end %>
+        <div class="mt-4">
+          <%= image_tag micropost.image.variant(:display), class: "rounded-lg shadow-lg max-w-full h-auto" %>
+        </div>
+
+    <% end %>
     </div>
   </div>
 </li>
