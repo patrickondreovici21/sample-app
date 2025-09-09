@@ -63,36 +63,4 @@
       <%= link_to "Log in", login_path, class: "block px-4 py-2 text-white hover:bg-gray-600" %>
     <% end %>
   </div>
-
-  <!-- Plain JS for live search -->
-  <script>
-    const input = document.getElementById('user-search-input');
-    const form = document.getElementById('user-search-form');
-    const resultsFrame = document.getElementById('search-results-frame');
-
-    let timeout = null;
-
-    input.addEventListener('input', () => {
-      clearTimeout(timeout);
-      timeout = setTimeout(() => {
-        if (input.value.trim() === "") {
-          resultsFrame.innerHTML = "";
-          resultsFrame.classList.add('hidden');
-        } else {
-          form.requestSubmit(); // submit the form to turbo frame
-        }
-      }, 300);
-    });
-
-    // Show results frame when content is loaded
-    document.addEventListener('turbo:frame-load', (event) => {
-      if (event.target.id === 'search-results-frame') {
-        if (event.target.innerHTML.trim() === "") {
-          event.target.classList.add('hidden');
-        } else {
-          event.target.classList.remove('hidden');
-        }
-      }
-    });
-  </script>
 </header>
