@@ -44,7 +44,7 @@ function addToggleListener(selected_id, menu_id) {
                     resultsContainer.innerHTML = data.length
                         ? data
                             .map((user) =>
-                                `<a href="/users/${user.id}" class="block px-2 py-1 hover:bg-gray-100 text-black">${user.name}</a>`
+                                `<a href="/users/${user.id}" data-turbo="false" class="block px-2 py-1 hover:bg-gray-100 text-black">${user.name}</a>`
                             ).join("")
                         : "<p class='px-2 py-1 text-black'>No results</p>";
 
