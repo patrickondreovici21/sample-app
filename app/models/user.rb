@@ -7,7 +7,7 @@ class User < ApplicationRecord
     has_many :passive_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
     has_many :following, through: :active_relationships, source: :followed
     has_many :followers, through: :passive_relationships, source: :follower
-    attr_accessor :remember_token, :activation_token
+    attr_accessor :remember_token, :activation_token, :reset_token
 
     before_save {self.email = email.downcase}
     before_create :create_activation_digest
@@ -76,6 +76,20 @@ class User < ApplicationRecord
         following.include?(other_user)
     end
 
+
+    def create_reset_digest
+        self.reset_token = User.new_token
+        update_attribute(:reset_digest, User.digest(reset_token))
+        update_attribute(:reset_sent_at, Time.zone.now)
+    end
+
+    def send_password_reset_email
+        UserMailer.password_reset(self).deliver_now
+    end
+
+    def password_reset_expired?
+        reset_sent_at < 2.hours.ago
+    end
 
     private
 
